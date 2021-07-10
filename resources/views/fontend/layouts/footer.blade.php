@@ -106,7 +106,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <span class="tg-copyright">Website được thiết kết bởi DreamBook</span>
+                    <span class="tg-copyright">Website được thiết kết bởi Quốc Kim</span>
                 </div>
             </div>
         </div>

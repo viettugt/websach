@@ -13,6 +13,7 @@ Danh sách sản phẩm
                     <th scope="col">ID</th>
                     <th scope="col">Tên slider</th>
                     <th scope="col">Ảnh Sider</th>
+                    <th>Action</th>
 
             </thead>
             <tbody>
@@ -21,13 +22,13 @@ Danh sách sản phẩm
                     <td>{{$key+1}} </td>
                     <td>{{$slide->name}}</td>
                     <td>
-                        <img style="width:40px;" src="upload/slide/{{$slide->image}}" alt="">
+                        <img style="width:100px;" src="upload/slide/{{$slide->image}}" alt="">
                     </td>
                     <td>
                         <form action="admin/xoa-slider/{{$slide->id}}" method="POST">
                             @csrf
-                            <a href="admin/sua-slider/{{$slide->id}}" class="btn btn-warning">Sửa</a>
-                            <button type="submit" class="btn btn-danger" >Xóa</button>
+                            <!-- <a href="admin/sua-slider/{{$slide->id}}" class="btn btn-warning">Sửa</a> -->
+                            <button type="submit" class="btn btn-danger" onclick="return Delete()">Xóa</button>
                         </form>
                     </td>
 
@@ -38,4 +39,13 @@ Danh sách sản phẩm
 
     </div>
 </div>
+@endsection
+@section('script')
+<script>
+    function Delete(){
+        var conf =confirm('Xác nhận xóa');
+    return conf;        
+    }
+</script>
+
 @endsection

@@ -18,6 +18,15 @@ class CategoryController extends Controller
         return view('backend.categories.add', compact('getAddCate'));
     }
     public function postAdd(Request $request){
+        $this->validate($request,[
+            'name'=>'required|min:3|unique:Product,name',
+        ],
+        [
+            'name.required'=>'Tên không được để trống',
+            'name.min'=>'Tên phải lón hơn 3 kí tự',
+            'name.unique'=>'Tên đã tồn tại',
+        ]
+        );
         $addcate = new Category;
         $addcate->name=$request->name;
         $addcate->status=$request->status;

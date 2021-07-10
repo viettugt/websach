@@ -11,6 +11,9 @@ Thêm danh mục
             <div class="col-6">
                 <div class="form-group">
                     <label for="">Tên Danh mục</label>
+                    @error('name')
+                    <div class="text text-danger">{{$message}}</div>
+                    @enderror
                     <input type="text" name="name" class='form-control'>
                 </div>
                 <div class="">

@@ -20,12 +20,23 @@ Sửa sản phẩm
 
                 <div class="form-group">
                     <label for="">Danh mục</label>
-                    <input type="text" name="cate_id" class='form-control'>
+                    <select name="cate_id" id="" class="form-control">
+                        @foreach($category as $cate)
+                        @if($cate->status == 1)
+                        <option @if($editPro->cate_id == $cate->id)
+                            {{ "selected" }}
+                            @endif
+                            value="{{ $cate->id }}"
+                            >{{$cate->name}}</option>
+                        @else
+                        @endif
+                        @endforeach
+                    </select>
                 </div>
 
                 <div class="form-group">
                     <label for="">Mô tả gắn</label>
-                    <input type="text" name="detail" class='form-control' value="{{$editPro->de}}">
+                    <input type="text" name="detail" class='form-control' value="{{$editPro->detail}}">
                 </div>
 
             </div>
@@ -33,12 +44,12 @@ Sửa sản phẩm
                 <div class="form-group">
                     <label for="">Ảnh sản phẩm</label>
                     <input type="file" name="image" class='form-control' value="">
-                    <img src="upload/product/{{$editPro->image}}" alt="">
+                    <img width="200px" src="upload/product/{{$editPro->image}}" alt="">
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Thêm</button>
-        <button type="button" class="btn btn-secondary">Hủy</button>
+        <button type="submit" class="btn btn-primary">Sửa</button>
+        <a href="{{ route('listProduct') }}" class="btn btn-secondary">Hủy</a>
     </form>
 </div>
 

@@ -15,9 +15,27 @@ class ProductController extends Controller
     }
     public function add(){
         $category = Category::all();
+        
         return view ('backend.products.add', compact('category'));
     }
     public function saveAdd(Request $request){
+        $this->validate($request,[
+            'name'=>'required|min:3|unique:Product,name',
+            'price'=>'required|numeric|min:0',
+            'detail'=>'required|min:0',
+            'image'=>'required'
+        ],
+        [
+            'name.required'=>'Tên không được để trống',
+            'name.min'=>'Tên phải lón hơn 3 kí tự',
+            'name.unique'=>'Tên đã tồn tại',
+            'price.required'=>'Giá không được để trống',
+            'price.min'=>'Giá phải lón hơn 0đ',
+            'detail.required'=>'Mô tả không được để trống',
+            'detail.min'=>'Mô tả phải lớn hơn 0 kí tự',
+            'image.required'=>'Ảnh không được để trống'
+        ]
+        );
         $pro= new Product;
         $pro->name = $request->name;
         $pro->price = $request->price;
@@ -42,7 +60,9 @@ class ProductController extends Controller
     }
     public function editProduct($id){
         $editPro = Product::find($id);
-        return view ('backend.products.edit',compact('editPro'));
+        $category = Category::all();
+
+        return view ('backend.products.edit',compact('editPro','category'));
     }
     public function saveEdit(Request $request ,$id){
         $savePro= Product::find($id);

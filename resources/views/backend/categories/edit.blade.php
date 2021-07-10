@@ -24,7 +24,7 @@ Sửa danh mục
 
         </div>
         <button type="submit" class="btn btn-primary">Sửa</button>
-        <button class="btn btn-secondary" href="{{ route('listCate') }}">Hủy</button>
+        <a class="btn btn-secondary" href="{{ route('listCate') }}">Hủy</a>
     </form>
 </div>
 @endsection

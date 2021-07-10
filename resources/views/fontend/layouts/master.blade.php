@@ -13,6 +13,8 @@
 
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
     <link rel="shortcut icon" href="fontend/public/templates/book/images/logo-title.png" type="image/x-icon" />
     <link rel="apple-touch-icon" href="fontend/public/templates/book/apple-touch-icon.html">
     <link rel="stylesheet" href="fontend/public/templates/book/css/bootstrap.min.css">
@@ -27,6 +29,8 @@
     <link rel="stylesheet" href="fontend/public/templates/book/css/responsive.css">
     <link rel="stylesheet" href="fontend/public/templates/book/sweetalert.css">
     <link rel="stylesheet" href="fontend/public/templates/book/css/style.css">
+    
+    
     <style>
     h3 a {
         text-transform: uppercase !important;
@@ -52,183 +56,13 @@
     <script data-ad-client="ca-pub-6175913672540520" async src="../pagead2.googlesyndication.com/pagead/js/f.txt">
     </script>
 </head>
-
+@yield('link')
 <body class="tg-home tg-homevtwo">
     <div id="tg-wrapper" class="tg-wrapper tg-haslayout">
         <!--************************************
 				Header Start
 		*************************************-->
-        <header id="tg-header" class="tg-header tg-headervtwo tg-haslayout">
-
-            <div class="tg-middlecontainer">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <strong class="tg-logo"><a href="">
-                                    <img width="120px;" src="fontend/image/logo.png"
-                                        alt="company name here"></a></strong>
-                            <div class="tg-searchbox">
-                                <form action="http://dreambook.vn/tim-kiem.html" method="get"
-                                    class="tg-formtheme tg-formsearch">
-                                    <input type="hidden" name="_token" value="9qjcAguTdU9WBwgu9ogJAvpbSaJ7saW1OBXXssjH">
-                                    <fieldset>
-                                        <input type="text" name="search" class="typeahead form-control"
-                                            placeholder="Tìm sách...">
-                                        <button type="submit" class="tg-btn">Tìm</button>
-                                    </fieldset>
-                                    <a href="javascript:void(0);">Tìm sách nào</a>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tg-navigationarea">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <div class="tg-navigationholder">
-                                <nav id="tg-nav" class="tg-nav">
-                                    <div class="navbar-header">
-                                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                                            data-target="#tg-navigation" aria-expanded="false">
-                                            <span class="sr-only">Toggle navigation</span>
-                                            <span class="icon-bar"></span>
-                                            <span class="icon-bar"></span>
-                                            <span class="icon-bar"></span>
-                                        </button>
-                                    </div>
-                                    <div id="tg-navigation" class="collapse navbar-collapse tg-navigation">
-                                        <ul>
-                                            <li class="menu-item-has-children menu-item-has-mega-menu">
-                                                <a href="javascript:void(0);">DANH MỤC SÁCH</i></a>
-                                                <ul class="sub-menu">
-                                                    @foreach($cate as $cate)
-                                                    @if($cate->status == 1)
-                                                    <li class=""><a href="">{{$cate->name}}</a>
-                                                    </li>
-                                                    @else
-                                                    @endif
-                                                    @endforeach
-                                                </ul>
-
-                                            </li>
-                                            <li class="current-menu-item">
-                                                <a href="{{ route('homepage') }}">Trang chủ</a>
-                                            </li>
-                                            <li class="">
-                                                <a href="su-kien-sale.html">Sự kiện Sale</a>
-                                            </li>
-                                            <li class="">
-                                                <a href="{{ route('introduce') }}">Giới thiệu</a>
-                                            </li>
-                                            <li class="">
-                                                <a href="{{ route('tutorial') }}">Hướng dẫn</a>
-                                            </li>
-                                            <li class="">
-                                                <a href="{{ route('policy') }}">Chính sách</a>
-                                            </li>
-                                            <li class="">
-                                                <a href="tin-tuc.html">Tin tức</a>
-                                            </li>
-                                            <li class="">
-                                                <a href="{{ route('contact') }}">Liên hệ</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </nav>
-                                <div class="tg-wishlistandcart">
-                                    <div class="dropdown tg-themedropdown tg-minicartdropdown">
-                                        <a href="gio-hang/kiem-tra-don-hang.html" class="tg-btnthemedropdown"
-                                            title="Kiểm tra tình trạng đơn hàng">
-                                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                                        </a>
-                                    </div>
-                                    <div class="dropdown tg-themedropdown tg-minicartdropdown">
-                                        <a href id="cart" class="tg-btnthemedropdown tg-minicart-o" data-toggle="dropdown">
-                                            <span class="tg-themebadge" id="tg-themebadge">0</span>
-                                            <i class="icon-cart"></i>
-                                        </a>
-                                        <div class="dropdown-menu tg-themedropdownmenu" id="view-cart"
-                                            aria-labelledby="tg-minicart">
-                                            <div class="tg-minicartbody">
-                                                <div class="tg-minicarproduct">
-                                                    <figure style="width:100%">
-                                                        <span>Giỏ hàng</span><span
-                                                            style="position: absolute;right: -30px;"><a
-                                                                class="tg-minicart-o" href="javascript:void(0);"><i
-                                                                    class="fa fa-times"
-                                                                    aria-hidden="true"></i></a></span>
-                                                    </figure>
-                                                </div>
-
-                                            </div>
-                                            <div class="tg-minicartbody" id="tg-minicartbody">
-                                                <div class="tg-minicarproduct">
-                                                    <figure>
-                                                        <img src="public/templates/book/images/products/img-01.jpg"
-                                                            alt="image description">
-
-                                                    </figure>
-                                                    <div class="tg-minicarproductdata">
-                                                        <h5><a href="javascript:void(0);">Our State Fair Is A Great
-                                                                Function</a></h5>
-                                                        <h6><a href="javascript:void(0);">$ 12.15</a></h6>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div class="tg-minicartfoot">
-                                                <div style="height:29px">
-                                                    <span class="tg-subtotal">Ship: <strong
-                                                            id="price-ship">35,000đ</strong></span>
-                                                </div>
-                                                <div>
-                                                    <a class="tg-btnemptycart" onclick="delCart()"
-                                                        href="javascript:void(0);">
-                                                        <i class="fa fa-trash-o"></i>
-                                                        <span>Hủy giỏ hàng</span>
-                                                    </a>
-                                                    <span class="tg-subtotal">Tổng: <strong
-                                                            id="tg-subtotal">35.78</strong></span>
-                                                </div>
-                                                <form action="javascript:void(0)" id="order_form">
-                                                    <input type="text" id="name" name="name" value=""
-                                                        class="form-control input-cart" placeholder="Họ tên*">
-                                                    <input type="text" id="phone" name="phone" value=""
-                                                        class="form-control input-cart" placeholder="Số điện thoại*">
-                                                    <input type="text" id="address" name="address"" value="" class="
-                                                        form-control input-cart" placeholder="Địa chỉ*">
-                                                    <div class="tg-btns">
-                                                        <button type="submit" class="tg-btn"
-                                                            href="javascript:void(0);">Đặt hàng</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown tg-themedropdown tg-wishlistdropdown">
-                                        <a href="javascript:void(0);" class="tg-btnthemedropdown mobile-search">
-                                            <i class="fa fa-search" aria-hidden="true"></i>
-                                        </a>
-                                        <div class="book-search">
-                                            <form action="http://dreambook.vn/tim-kiem.html" method="get">
-                                                <input type="hidden" name="_token"
-                                                    value="9qjcAguTdU9WBwgu9ogJAvpbSaJ7saW1OBXXssjH">
-                                                <a href="javascript:void(0);" class="mobile-search"><i
-                                                        class="fa fa-times" aria-hidden="true"></i></a>
-                                                <input type="text" name="search" placeholder="Tìm sách...">
-                                                <button><i class="fa fa-search" aria-hidden="true"></i></button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
+        @include('fontend.layouts.header')
         <!--************************************
 				Header End
 		*************************************-->
@@ -248,7 +82,7 @@
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                 <div class="tg-footercol">
                                     <strong class="tg-logo"><a href="javascript:void(0);"><img width="120px;"
-                                                src="fontend/image/logo.png" alt="image description"></a></strong>
+                                                src="fontend/image/logob1.png" alt="image description"></a></strong>
                                     <ul class="tg-contactinfo">
                                         <li>
                                             <i class="icon-apartment"></i>
@@ -348,7 +182,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <span class="tg-copyright">Website được thiết kết bởi DreamBook</span>
+                            <span class="tg-copyright">Website được thiết kết bởi Quốc Kim</span>
                         </div>
                     </div>
                 </div>

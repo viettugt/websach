@@ -17,6 +17,17 @@ class SliderController extends Controller
         return view('backend.sliders.addslide');
     }
     public function postadd(Request $request){
+        $this->validate($request,[
+            'name'=>'required|min:3|unique:Product,name',
+            'image'=>'required'
+        ],
+        [
+            'name.required'=>'Tên không được để trống',
+            'name.min'=>'Tên phải lón hơn 3 kí tự',
+            'name.unique'=>'Tên đã tồn tại',
+            'image.required'=>'Ảnh không được để trống'
+        ]
+        );
         $slide = new Slider;
         $slide->name = $request->name;
         if($request->hasfile('image')){

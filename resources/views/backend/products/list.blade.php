@@ -14,8 +14,8 @@ Danh sách sản phẩm
                     <th scope="col">Tên sản phẩm</th>
                     <th scope="col">Danh mục</th>
                     <th scope="col">Giá sản phẩm</th>
-                    <th scope="col">Chi tiết</th>
                     <th scope="col">Ảnh sản phẩm</th>
+                    <th scope="col" width="200">Chi tiết</th>
                     <th scope="col">Action</th>
 
             </thead>
@@ -26,10 +26,10 @@ Danh sách sản phẩm
                     <td>{{$pro->name}}</td>
                     <td>{{$pro->category->name}}</td>
                     <td>{{$pro->price}}</td>
-                    <td>{{$pro->detail}}</td>
                     <td>
-                        <img width="100px"  src="upload/product/{{$pro->image}}" alt="">
+                        <img width="100"  src="upload/product/{{$pro->image}}" alt="">
                     </td>
+                    <td>{{substr($pro->detail,0,100)}}...</td>
                     <td>
                         <form action="admin/xoa-san-pham/{{$pro->id}}" method="POST">
                         @csrf
